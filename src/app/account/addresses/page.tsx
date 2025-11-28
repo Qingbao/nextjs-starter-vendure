@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 import { GetCustomerAddressesQuery, GetAvailableCountriesQuery } from '@/lib/vendure/queries';
 import { AddressesClient } from './addresses-client';
 
-export default async function AddressesPage() {
+export default async function AddressesPage(_props: PageProps<'/account/addresses'>) {
     const [addressesResult, countriesResult] = await Promise.all([
         query(GetCustomerAddressesQuery, {}, { useAuthToken: true }),
         query(GetAvailableCountriesQuery, {}),

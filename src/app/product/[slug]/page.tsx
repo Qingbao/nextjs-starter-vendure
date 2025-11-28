@@ -12,11 +12,6 @@ import {
     buildOgImages,
 } from '@/lib/metadata';
 
-interface ProductDetailPageProps {
-    params: Promise<{ slug: string }>;
-    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
 async function getProductData(slug: string) {
     'use cache';
     cacheLife('hours');
@@ -27,7 +22,7 @@ async function getProductData(slug: string) {
 
 export async function generateMetadata({
     params,
-}: ProductDetailPageProps): Promise<Metadata> {
+}: PageProps<'/product/[slug]'>): Promise<Metadata> {
     const { slug } = await params;
     const result = await getProductData(slug);
     const product = result.data.product;
@@ -63,7 +58,7 @@ export async function generateMetadata({
     };
 }
 
-export default async function ProductDetailPage({ params, searchParams }: ProductDetailPageProps) {
+export default async function ProductDetailPage({params, searchParams}: PageProps<'/product/[slug]'>) {
     const { slug } = await params;
     const searchParamsResolved = await searchParams;
 

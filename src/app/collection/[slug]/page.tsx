@@ -14,11 +14,6 @@ import {
     buildOgImages,
 } from '@/lib/metadata';
 
-interface CollectionPageProps {
-    params: Promise<{ slug: string }>;
-    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
 async function getCollectionProducts(slug: string, searchParams: { [key: string]: string | string[] | undefined }) {
     'use cache';
     cacheLife('hours');
@@ -45,7 +40,7 @@ async function getCollectionMetadata(slug: string) {
 
 export async function generateMetadata({
     params,
-}: CollectionPageProps): Promise<Metadata> {
+}: PageProps<'/collection/[slug]'>): Promise<Metadata> {
     const { slug } = await params;
     const result = await getCollectionMetadata(slug);
     const collection = result.data.collection;
@@ -84,7 +79,7 @@ export async function generateMetadata({
     };
 }
 
-export default async function CollectionPage({ params, searchParams }: CollectionPageProps) {
+export default async function CollectionPage({params, searchParams}: PageProps<'/collection/[slug]'>) {
     const { slug } = await params;
     const searchParamsResolved = await searchParams;
     const page = getCurrentPage(searchParamsResolved);

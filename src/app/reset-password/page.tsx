@@ -8,11 +8,7 @@ export const metadata: Metadata = {
     description: 'Create a new password for your account.',
 };
 
-interface ResetPasswordPageProps {
-    searchParams: Promise<{ token?: string }>;
-}
-
-export default function ResetPasswordPage({ searchParams }: ResetPasswordPageProps) {
+export default function ResetPasswordPage({searchParams}: PageProps<'/reset-password'>) {
     return (
         <div className="container mx-auto px-4 py-16">
             <div className="max-w-md mx-auto">

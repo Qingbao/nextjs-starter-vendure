@@ -25,14 +25,11 @@ import {redirect} from "next/navigation";
 
 const ITEMS_PER_PAGE = 10;
 
-export default async function OrdersPage(props: {
-    params: Promise<{ locale: string }>,
-    searchParams: Promise<{ page?: string }>
-}) {
+export default async function OrdersPage(props: PageProps<'/account/orders'>) {
     const searchParams = await props.searchParams;
-    const currentPage = parseInt(searchParams.page || '1', 10);
+    const pageParam = searchParams.page;
+    const currentPage = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || '1', 10);
     const skip = (currentPage - 1) * ITEMS_PER_PAGE;
-    const params = await props.params
 
     const {data} = await query(
         GetCustomerOrdersQuery,

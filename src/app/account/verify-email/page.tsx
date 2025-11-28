@@ -6,12 +6,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-interface VerifyEmailPageProps {
-    searchParams: Promise<{ token?: string }>;
-}
-
-async function VerifyEmailContent({ searchParams }: VerifyEmailPageProps) {
-    const { token } = await searchParams;
+async function VerifyEmailContent({searchParams}: {searchParams: Promise<Record<string, string | string[] | undefined>>}) {
+    const resolvedParams = await searchParams;
+    const tokenParam = resolvedParams.token;
+    const token = Array.isArray(tokenParam) ? tokenParam[0] : tokenParam;
 
     if (!token) {
         return (
@@ -35,7 +33,7 @@ async function VerifyEmailContent({ searchParams }: VerifyEmailPageProps) {
     }
 
     try {
-        const result = await mutate(UpdateCustomerEmailAddressMutation, { token }, { useAuthToken: true });
+        const result = await mutate(UpdateCustomerEmailAddressMutation, { token: token! }, { useAuthToken: true });
         const updateResult = result.data.updateCustomerEmailAddress;
 
         if (updateResult.__typename === 'Success') {
@@ -99,7 +97,7 @@ async function VerifyEmailContent({ searchParams }: VerifyEmailPageProps) {
     }
 }
 
-export default async function VerifyEmailPage({ searchParams }: VerifyEmailPageProps) {
+export default async function VerifyEmailPage({searchParams}: PageProps<'/account/verify-email'>) {
     return (
         <div className="container mx-auto px-4 py-8 mt-16">
             <Suspense fallback={

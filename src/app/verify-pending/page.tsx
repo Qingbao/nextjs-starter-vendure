@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: 'Check your email to verify your account.',
 };
 
-export default function VerifyPendingPage() {
+export default function VerifyPendingPage(_props: PageProps<'/verify-pending'>) {
     return (
         <div className="flex min-h-screen items-center justify-center px-4">
             <div className="w-full max-w-md space-y-6">

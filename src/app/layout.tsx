@@ -55,11 +55,7 @@ export const viewport: Viewport = {
     ],
 };
 
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: LayoutProps<'/'>) {
     return (
         <html lang="en">
             <body

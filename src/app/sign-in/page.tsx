@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     description: 'Sign in to your account to access your orders, wishlist, and more.',
 };
 
-export default function SignInPage() {
+export default function SignInPage(_props: PageProps<'/sign-in'>) {
     return (
         <div className="flex min-h-screen items-center justify-center px-4">
             <div className="w-full max-w-md space-y-6">

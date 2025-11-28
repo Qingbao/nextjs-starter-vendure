@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     robots: noIndexRobots(),
 };
 
-export default async function CheckoutPage() {
+export default async function CheckoutPage(_props: PageProps<'/checkout'>) {
     const [orderRes, addressesRes, countriesRes, shippingMethodsRes, paymentMethodsRes] =
         await Promise.all([
             query(GetActiveOrderForCheckoutQuery, {}, {useAuthToken: true}),

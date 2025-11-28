@@ -5,14 +5,9 @@ import {SearchTerm, SearchTermSkeleton} from "@/app/search/search-term";
 import {SearchResultsSkeleton} from "@/components/skeletons/search-results-skeleton";
 import {SITE_NAME, noIndexRobots} from '@/lib/metadata';
 
-interface SearchPageProps {
-    params: Promise<{ locale: string }>;
-    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
 export async function generateMetadata({
     searchParams,
-}: SearchPageProps): Promise<Metadata> {
+}: PageProps<'/search'>): Promise<Metadata> {
     const resolvedParams = await searchParams;
     const searchQuery = resolvedParams.q as string | undefined;
 
@@ -29,7 +24,7 @@ export async function generateMetadata({
     };
 }
 
-export default async function SearchPage({params, searchParams}: SearchPageProps) {
+export default async function SearchPage({searchParams}: PageProps<'/search'>) {
     return (
         <div className="container mx-auto px-4 py-8 mt-16">
             <Suspense fallback={<SearchTermSkeleton/>}>

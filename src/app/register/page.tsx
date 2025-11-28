@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     description: 'Create a new account to start shopping with us.',
 };
 
-export default function RegisterPage() {
+export default function RegisterPage(_props: PageProps<'/register'>) {
     return (
         <div className="flex min-h-screen items-center justify-center px-4">
             <div className="w-full max-w-md space-y-6">

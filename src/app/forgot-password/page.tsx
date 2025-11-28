@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     description: 'Reset your password to regain access to your account.',
 };
 
-export default async function ForgotPasswordPage() {
+export default async function ForgotPasswordPage(_props: PageProps<'/forgot-password'>) {
     return (
         <div className="container mx-auto px-4 py-16">
             <div className="max-w-md mx-auto">
