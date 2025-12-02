@@ -7,7 +7,8 @@
   Vendure Next.js Storefront Starter
 </h1>
 <h3 align="center">
-    Production-ready Next.js 16 storefront for Vendure headless commerce.
+    A Next.js 16 storefront starter for Vendure headless commerce.<br/>
+    Use as a foundation to build upon, take inspiration from, or learn the ergonomics of the Vendure Shop API.
 </h3>
 <h4 align="center">
   <a href="https://docs.vendure.io">Documentation</a> |

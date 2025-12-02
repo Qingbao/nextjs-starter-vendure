@@ -19,7 +19,7 @@ export function HeroSection() {
                             </Link>
                         </Button>
                         <Button asChild variant="outline" size="lg" className="min-w-[200px]">
-                            <a href="https://github.com/vendure-ecommerce/storefront-next-starter" target="_blank"
+                            <a href="https://github.com/vendure-ecommerce/nextjs-starter-vendure" target="_blank"
                                rel="noopener noreferrer">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1024 1024">
                                     <path fill="currentColor" fillRule="evenodd"
